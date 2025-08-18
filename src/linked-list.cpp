@@ -139,6 +139,43 @@ public:
             length--;
         }
     }
+
+
+    void reverse(){
+        Node* prev, *next, *curr;
+        prev=NULL;
+        curr = first;
+        next=curr->next;
+
+        while (next != nullptr)
+        {
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        
+
+
+        first = prev;
+    }
+
+
+    int search(T element){
+        Node*curr=first;
+        int ps=0;
+   
+        while (curr != nullptr)
+        {
+             if(curr->data==element){
+                return ps;
+            }
+            curr=curr->next;
+            ps++;
+        }
+        
+        return -1; // Element not found
+    }
 };
 
 int main() {
